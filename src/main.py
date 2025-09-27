@@ -34,5 +34,6 @@ cat2 = Category("Drinks", "Some", ["Water", "Vodka"])
 
 print(Category.number_of_categories)
 print(Category.number_of_products)
+print(Category.number_of_products)
 
 
