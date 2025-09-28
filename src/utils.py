@@ -27,13 +27,13 @@ def create_objects_from_json(data: list) -> Any:
     return categories
 
 
-if __name__ == "__main__":
-    data = read_file("data/products.json")
-    print(data)
-    print(type(data))
-
-    result = create_objects_from_json(data)
-    print(result)
-    print(result[0].name)
-    print(result[0].description)
-    print(result[0].products)
+# if __name__ == "__main__":
+#     data = read_file("data/products.json")
+#     print(data)
+#     print(type(data))
+#
+#     result = create_objects_from_json(data)
+#     print(result)
+#     print(result[0].name)
+#     print(result[0].description)
+#     print(result[0].products)

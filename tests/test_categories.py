@@ -1,5 +1,3 @@
-
-
 def test_categories_init(first_category, second_category):
     assert first_category.name == "Vegetables"
     assert first_category.description == "Fresh"
