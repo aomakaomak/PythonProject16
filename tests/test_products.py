@@ -7,7 +7,8 @@ def test_products_init(first_product):
     assert first_product.price == 5.8
     assert first_product.quantity == 2
 
-def test_new_product(dictionary1, dictionary2, dictionary3,dictionary4):
+
+def test_new_product(dictionary1, dictionary2, dictionary3, dictionary4):
     product_list = []
     product1 = Product.new_product(dictionary1, product_list)
     product2 = Product.new_product(dictionary2, product_list)
@@ -22,3 +23,36 @@ def test_new_product(dictionary1, dictionary2, dictionary3,dictionary4):
     assert product3.price == 213.5
     assert product4.quantity == 20
 
+
+# !!! На геттер price(self)  отдельно тест смысла писать нет, поскольку
+# он уже фактически реализован в test_products_init -- если бы геттер не работал, то и
+# test_products_init упал бы, так как мы сделали price приватным
+
+
+def test_price_setter(
+    first_product, price1, price2, price3, price4, set_fake_input, capsys
+):
+    first_product.price = price1
+    assert first_product.price == 3000
+
+    set_fake_input("n")
+    first_product.price = price2
+    out = capsys.readouterr().out
+    assert "Подтвердите цену" in out
+    assert first_product.price == 3000
+
+    first_product.price = price3
+    out = capsys.readouterr().out
+    assert "не должна быть нулевая" in out
+    assert first_product.price == 3000
+
+    first_product.price = price4
+    out = capsys.readouterr().out
+    assert "не должна быть нулевая" in out
+    assert first_product.price == 3000
+
+    set_fake_input("y")
+    first_product.price = 2500
+    out = capsys.readouterr().out
+    assert "Подтвердите цену" in out
+    assert first_product.price == 2500

@@ -1,19 +1,21 @@
 import json
 import os
 from typing import Any
+
 from categories import Category
 from products import Product
 
 
 def read_file(file_path: str) -> list:
-    """ Читаем файл """
+    """Читаем файл"""
     full_path = os.path.abspath(file_path)
     with open(full_path, "r", encoding="UTF-8") as file:
         data = json.load(file)
     return data
 
+
 def create_objects_from_json(data: list) -> Any:
-    """ Формируем данные """
+    """Формируем данные"""
     categories = []
     for category in data:
         products = []
@@ -23,6 +25,7 @@ def create_objects_from_json(data: list) -> Any:
         categories.append(Category(**category))
 
     return categories
+
 
 # if __name__ == "__main__":
 #     data = read_file("data/products.json")
