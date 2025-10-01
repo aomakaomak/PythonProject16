@@ -9,19 +9,18 @@ def test_products_init(first_product):
 
 
 def test_new_product(dictionary1, dictionary2, dictionary3, dictionary4):
-    product_list = []
-    product1 = Product.new_product(dictionary1, product_list)
-    product2 = Product.new_product(dictionary2, product_list)
-    product3 = Product.new_product(dictionary3, product_list)
-    product4 = Product.new_product(dictionary4, product_list)
+    product1 = Product.new_product(dictionary1)
+    product2 = Product.new_product(dictionary2)
+    product3 = Product.new_product(dictionary3)
+    product4 = Product.new_product(dictionary4)
     assert product1.name == "Cucumber"
     assert product1.description == "Very tasty"
-    assert product1.price == 2345.5
-    assert product1.quantity == 20
+    assert product1.price == 10.5
+    assert product1.quantity == 10
 
     assert product2.name == "Apple"
     assert product3.price == 213.5
-    assert product4.quantity == 20
+    assert product4.quantity == 10
 
 
 # !!! На геттер price(self)  отдельно тест смысла писать нет, поскольку

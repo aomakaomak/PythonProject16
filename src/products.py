@@ -11,19 +11,8 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, dictionary, product_list):
-        for product in product_list:
-            if dictionary.get("name") == product.name:
-                product.price = max(product.price, dictionary.get("price"))
-                product.quantity += dictionary.get("quantity")
-                return product
-        product = cls(
-            dictionary.get("name"),
-            dictionary.get("description"),
-            dictionary.get("price"),
-            dictionary.get("quantity"),
-        )
-        product_list.append(product)
+    def new_product(cls, product_data):
+        product = Product(**product_data)
         return product
 
     @property
@@ -70,19 +59,19 @@ class Product:
 #     }
 #
 #     product_list = []
-#
-#     product1 = Product.new_product(dictionary1, product_list)
+
+# product1 = Product.new_product(dictionary1)
 #     product2 = Product.new_product(dictionary2, product_list)
 #     product3 = Product.new_product(dictionary3, product_list)
 #     product4 = Product.new_product(dictionary4, product_list)
 #
-#     print(product1)
+# print(product1.name)
 #     print(type(product1))
 #
-#     print(product1.name)
-#     print(product1.description)
-#     print(product1.price)
-#     print(product1.quantity)
+# print(product1.name)
+# print(product1.description)
+# print(product1.price)
+# print(product1.quantity)
 #
 #     print(product2.name)
 #     print(product2.description)
@@ -124,3 +113,19 @@ class Product:
 #     print(product2.description)
 #     print(product2.price)
 #     print(product2.quantity)
+
+
+#     def new_product(cls, dictionary, product_list):
+#         for product in product_list:
+#             if dictionary.get("name") == product.name:
+#                 product.price = max(product.price, dictionary.get("price"))
+#                 product.quantity += dictionary.get("quantity")
+#                 return product
+#         product = cls(
+#             dictionary.get("name"),
+#             dictionary.get("description"),
+#             dictionary.get("price"),
+#             dictionary.get("quantity"),
+#         )
+#         product_list.append(product)
+#         return product
