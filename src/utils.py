@@ -7,7 +7,7 @@ from products import Product
 
 
 def read_file(file_path: str) -> list:
-    """ Читаем файл """
+    """Читаем файл"""
     full_path = os.path.abspath(file_path)
     with open(full_path, "r", encoding="UTF-8") as file:
         data = json.load(file)
@@ -15,7 +15,7 @@ def read_file(file_path: str) -> list:
 
 
 def create_objects_from_json(data: list) -> Any:
-    """ Формируем данные """
+    """Формируем данные"""
     categories = []
     for category in data:
         products = []

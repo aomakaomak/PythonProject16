@@ -9,3 +9,20 @@ def test_categories_init(first_category, second_category):
 
     assert first_category.number_of_products == 5
     assert second_category.number_of_products == 5
+
+
+def test_categories_products_property(first_category):
+    assert first_category.products == (
+        "Cucumber, 23.5 руб. Остаток: 10 шт.\n" "Tomato, 45.2 руб. Остаток: 20 шт."
+    )
+
+
+def test_categories_add_product(first_category, first_product):
+    assert len(first_category.products_in_list) == 2
+    first_category.add_product(first_product)
+    assert first_category.products == (
+        "Cucumber, 23.5 руб. Остаток: 10 шт.\n"
+        "Tomato, 45.2 руб. Остаток: 20 шт.\n"
+        "Bread, 5.8 руб. Остаток: 2 шт."
+    )
+    assert len(first_category.products_in_list) == 3
