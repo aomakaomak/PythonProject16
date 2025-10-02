@@ -1,4 +1,5 @@
 from src.products import Product
+import pytest
 
 
 def test_products_init(first_product):
@@ -60,3 +61,14 @@ def test_products_str_product(first_product, capsys):
     print(first_product)
     out, err = capsys.readouterr()
     assert "Bread, 5.8 руб. Остаток: 2 шт." in out
+
+
+def test_products_add_product(first_product, second_product):
+    assert (first_product + second_product) == 221.6
+
+
+def test_products_add_wrong_product(first_product, wrong_product):
+    expected_message = f"Ожидался Product, а получен {type(wrong_product).__name__}"
+    with pytest.raises(TypeError) as excinfo:
+        _ = first_product + wrong_product
+    assert str(excinfo.value) == expected_message
