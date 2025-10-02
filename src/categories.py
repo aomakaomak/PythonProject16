@@ -21,7 +21,6 @@ class Category:
         self.__products.append(product)
         Category.number_of_products += 1
 
-
     @property
     def products(self):
         product_list = []
@@ -43,33 +42,54 @@ class Category:
         return f"{self.name}, количество продуктов: {goods_count} шт."
 
 
+class MyList:
+    category: Category
 
-if __name__ == "__main__":
+    def __init__(self, category):
+        self.category = category
 
-    product1 = Product("Cucumber", "Very tasty", 23.5, 10)
-    product2 = Product("Tomato", "Very fresh", 45.2, 20)
-    product3 = Product("Limonade", "Cool", 12.3, 30)
-    product4 = Product("Juice", "Natural", 29.2, 40)
-    product5 = Product("Vodka", "Natural", 229.2, 50)
+    def __iter__(self):
+        self.i = -1
+        return self
 
-    cat1 = Category("Food", "Some", [product1, product2])
-    cat2 = Category("Drinks", "Some", [product3, product4])
-    print(cat1)
-    print(cat2)
-    print(cat1.products)
-    print(cat2.products)
+    def __next__(self):
+        if self.i + 1 < len(self.category.products_in_list):
+            self.i += 1
+            return self.category.products_in_list[self.i]
+        else:
+            raise StopIteration
 
-    cat2.add_product(product5)
-    print(product5.name)
 
-    print(cat2.products)
-
-    print(Category.number_of_categories)
-    print(Category.number_of_products)
-
-    print(cat1)
-    print(cat2)
-
+# if __name__ == "__main__":
+#
+#     product1 = Product("Cucumber", "Very tasty", 23.5, 10)
+#     product2 = Product("Tomato", "Very fresh", 45.2, 20)
+#     product3 = Product("Limonade", "Cool", 12.3, 30)
+#     product4 = Product("Juice", "Natural", 29.2, 40)
+#     product5 = Product("Vodka", "Natural", 229.2, 50)
+#
+#     cat1 = Category("Food", "Some", [product1, product2])
+#     cat2 = Category("Drinks", "Some", [product3, product4])
+#     print(cat1)
+#     print(cat2)
+#     print(cat1.products)
+#     print(cat2.products)
+#
+#     cat2.add_product(product5)
+#     print(product5.name)
+#
+#     print(cat2.products)
+#
+#     print(Category.number_of_categories)
+#     print(Category.number_of_products)
+#
+#     print(cat1)
+#     print(cat2)
+#
+#     category = MyList(cat1)
+#
+#     for product in category:
+#         print(product)
 
 
 # prod1 = Category.add_product(product1)

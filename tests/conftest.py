@@ -2,7 +2,7 @@ import builtins
 
 import pytest
 
-from src.categories import Category
+from src.categories import Category, MyList
 from src.products import Product
 
 

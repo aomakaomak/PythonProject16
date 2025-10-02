@@ -1,3 +1,6 @@
+from src.categories import MyList
+
+
 def test_categories_init(first_category, second_category):
     assert first_category.name == "Vegetables"
     assert first_category.description == "Fresh"
@@ -32,3 +35,13 @@ def test_categories_str_category(first_category, capsys):
     print(first_category)
     out, err = capsys.readouterr()
     assert "Vegetables, количество продуктов: 30 шт." in out
+
+
+def test_categories_class_mylist(first_category, capsys):
+    category = MyList(first_category)
+    for product in category:
+        print(product)
+    out, err = capsys.readouterr()
+    assert (
+        "Cucumber, 23.5 руб. Остаток: 10 шт.\nTomato, 45.2 руб. Остаток: 20 шт." in out
+    )

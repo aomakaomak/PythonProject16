@@ -57,6 +57,7 @@ def test_price_setter(
     assert "Подтвердите цену" in out
     assert first_product.price == 2500
 
+
 def test_products_str_product(first_product, capsys):
     print(first_product)
     out, err = capsys.readouterr()

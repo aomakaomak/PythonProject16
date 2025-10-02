@@ -40,48 +40,48 @@ class Product:
         return self.price * self.quantity + other.price * other.quantity
 
 
-if __name__ == "__main__":
-    dictionary1 = {
-        "name": "Cucumber",
-        "description": "Very tasty",
-        "price": 10.5,
-        "quantity": 10
-    }
-    dictionary2 = {
-        "name": "Apple",
-        "description": "Very tasty",
-        "price": 233.5,
-        "quantity": 30
-    }
-    dictionary3 = {
-        "name": "Orange",
-        "description": "Very tasty",
-        "price": 213.5,
-        "quantity": 120
-    }
-    dictionary4 = {
-        "name": "Cucumber",
-        "description": "Very tasty",
-        "price": 2345.5,
-        "quantity": 10
-    }
+# if __name__ == "__main__":
+#     dictionary1 = {
+#         "name": "Cucumber",
+#         "description": "Very tasty",
+#         "price": 10.5,
+#         "quantity": 10,
+#     }
+#     dictionary2 = {
+#         "name": "Apple",
+#         "description": "Very tasty",
+#         "price": 233.5,
+#         "quantity": 30,
+#     }
+#     dictionary3 = {
+#         "name": "Orange",
+#         "description": "Very tasty",
+#         "price": 213.5,
+#         "quantity": 120,
+#     }
+#     dictionary4 = {
+#         "name": "Cucumber",
+#         "description": "Very tasty",
+#         "price": 2345.5,
+#         "quantity": 10,
+#     }
+#     #
+#     #     product_list = []
 #
-#     product_list = []
-
-    product1 = Product.new_product(dictionary1)
-    product2 = Product.new_product(dictionary2)
-    product3 = Product.new_product(dictionary3)
-    product4 = Product.new_product(dictionary4)
-
-    print(product1)
-    print(product2)
-    print(product3)
-    print(product4)
-
-    product_wrong = "Banana"
-
-    print(product1 + product2)
-    print(product1 + product_wrong)
+#     product1 = Product.new_product(dictionary1)
+#     product2 = Product.new_product(dictionary2)
+#     product3 = Product.new_product(dictionary3)
+#     product4 = Product.new_product(dictionary4)
+#
+#     print(product1)
+#     print(product2)
+#     print(product3)
+#     print(product4)
+#
+#     product_wrong = "Banana"
+#
+#     print(product1 + product2)
+#     print(product1 + product_wrong)
 
 # print(product1.name)
 #     print(type(product1))
