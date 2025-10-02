@@ -37,6 +37,16 @@ def first_product():
 
 
 @pytest.fixture
+def second_product():
+    return Product(name="Butter", description="local", price=15, quantity=14)
+
+
+@pytest.fixture
+def wrong_product():
+    return "Banana"
+
+
+@pytest.fixture
 def dictionary1():
     return {
         "name": "Cucumber",

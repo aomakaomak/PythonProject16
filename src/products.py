@@ -31,40 +31,58 @@ class Product:
             if access == "y":
                 self.__price = new_price
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
-# if __name__ == "__main__":
-#     dictionary1 = {
-#         "name": "Cucumber",
-#         "description": "Very tasty",
-#         "price": 10.5,
-#         "quantity": 10
-#     }
-#     dictionary2 = {
-#         "name": "Apple",
-#         "description": "Very tasty",
-#         "price": 233.5,
-#         "quantity": 30
-#     }
-#     dictionary3 = {
-#         "name": "Orange",
-#         "description": "Very tasty",
-#         "price": 213.5,
-#         "quantity": 120
-#     }
-#     dictionary4 = {
-#         "name": "Cucumber",
-#         "description": "Very tasty",
-#         "price": 2345.5,
-#         "quantity": 10
-#     }
+    def __add__(self, other):
+        if not isinstance(other, Product):
+            raise TypeError(f"Ожидался Product, а получен {type(other).__name__}")
+        return self.price * self.quantity + other.price * other.quantity
+
+
+if __name__ == "__main__":
+    dictionary1 = {
+        "name": "Cucumber",
+        "description": "Very tasty",
+        "price": 10.5,
+        "quantity": 10
+    }
+    dictionary2 = {
+        "name": "Apple",
+        "description": "Very tasty",
+        "price": 233.5,
+        "quantity": 30
+    }
+    dictionary3 = {
+        "name": "Orange",
+        "description": "Very tasty",
+        "price": 213.5,
+        "quantity": 120
+    }
+    dictionary4 = {
+        "name": "Cucumber",
+        "description": "Very tasty",
+        "price": 2345.5,
+        "quantity": 10
+    }
 #
 #     product_list = []
 
-# product1 = Product.new_product(dictionary1)
-#     product2 = Product.new_product(dictionary2, product_list)
-#     product3 = Product.new_product(dictionary3, product_list)
-#     product4 = Product.new_product(dictionary4, product_list)
-#
+    product1 = Product.new_product(dictionary1)
+    product2 = Product.new_product(dictionary2)
+    product3 = Product.new_product(dictionary3)
+    product4 = Product.new_product(dictionary4)
+
+    print(product1)
+    print(product2)
+    print(product3)
+    print(product4)
+
+    product_wrong = "Banana"
+
+    print(product1 + product2)
+    print(product1 + product_wrong)
+
 # print(product1.name)
 #     print(type(product1))
 #
