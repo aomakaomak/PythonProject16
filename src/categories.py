@@ -25,9 +25,7 @@ class Category:
     def products(self):
         product_list = []
         for product in self.__products:
-            string = (
-                f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
-            )
+            string = str(product)
             product_list.append(string)
         result = "\n".join(product_list)
         return result
@@ -36,6 +34,30 @@ class Category:
     # создаем геттер, чтобы посчитать количество товаров в категории
     def products_in_list(self):
         return self.__products
+
+    def __str__(self):
+        goods_count = 0
+        for product in self.__products:
+            goods_count += product.quantity
+        return f"{self.name}, количество продуктов: {goods_count} шт."
+
+
+class MyList:
+    category: Category
+
+    def __init__(self, category):
+        self.category = category
+
+    def __iter__(self):
+        self.i = -1
+        return self
+
+    def __next__(self):
+        if self.i + 1 < len(self.category.products_in_list):
+            self.i += 1
+            return self.category.products_in_list[self.i]
+        else:
+            raise StopIteration
 
 
 # if __name__ == "__main__":
@@ -60,6 +82,14 @@ class Category:
 #
 #     print(Category.number_of_categories)
 #     print(Category.number_of_products)
+#
+#     print(cat1)
+#     print(cat2)
+#
+#     category = MyList(cat1)
+#
+#     for product in category:
+#         print(product)
 
 
 # prod1 = Category.add_product(product1)

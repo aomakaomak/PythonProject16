@@ -2,7 +2,7 @@ import builtins
 
 import pytest
 
-from src.categories import Category
+from src.categories import Category, MyList
 from src.products import Product
 
 
@@ -34,6 +34,16 @@ def second_category():
 @pytest.fixture
 def first_product():
     return Product(name="Bread", description="local", price=5.8, quantity=2)
+
+
+@pytest.fixture
+def second_product():
+    return Product(name="Butter", description="local", price=15, quantity=14)
+
+
+@pytest.fixture
+def wrong_product():
+    return "Banana"
 
 
 @pytest.fixture
