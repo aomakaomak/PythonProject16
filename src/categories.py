@@ -59,6 +59,23 @@ class MyList:
         else:
             raise StopIteration
 
+class Smartphone(Category):
+
+    def __init__(self, name, description, efficiency, model, memory, color, products=None):
+        super().__init__(name, description, products)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+class LawnGrass(Category):
+    def __init__(self, name, description, country, germination_period, color, products=None):
+        super().__init__(name, description, products)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+
 
 # if __name__ == "__main__":
 #
