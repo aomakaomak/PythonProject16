@@ -18,6 +18,7 @@ class Category:
         Category.number_of_products += len(products) if products else 0
 
     def add_product(self, product: Product):
+        # if isinstance(product, Category):
         self.__products.append(product)
         Category.number_of_products += 1
 

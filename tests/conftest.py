@@ -4,6 +4,8 @@ import pytest
 
 from src.categories import Category, MyList
 from src.products import Product
+from src.products import Smartphone
+from src.products import LawnGrass
 
 
 @pytest.fixture
@@ -116,3 +118,69 @@ def set_fake_input(monkeypatch):
         monkeypatch.setattr(builtins, "input", _fake)
 
     return _set
+
+
+@pytest.fixture
+def smart_product1():
+    return Smartphone(name="Samsung S20FE", description="local", price=700, quantity=10, efficiency="A", model="S20FE", memory=64, color="white")
+
+
+@pytest.fixture
+def smart_product2():
+    return Smartphone(name="Samsung A110", description="local", price=400, quantity=30, efficiency="B", model="A110", memory=16, color="black")
+
+
+@pytest.fixture
+def grass_product1():
+    return LawnGrass(name="Grass", description="local", price=100, quantity=200, country="China", germination_period=2, color="green")
+
+@pytest.fixture
+def dictionary5():
+    return {
+        "name": "Cucumber",
+        "description": "Very tasty",
+        "price": 10.5,
+        "quantity": 10,
+        "efficiency": 20,
+        "model": "Samsung",
+        "memory": 64,
+        "color": "white"
+
+    }
+
+@pytest.fixture
+def dictionary6():
+    return {
+        "name": "Apple",
+        "description": "Very tasty",
+        "price": 233.5,
+        "quantity": 30,
+        "efficiency": 30,
+        "model": "Xiaomi",
+        "memory": 32,
+        "color": "black"
+    }
+
+@pytest.fixture
+def dictionary7():
+    return {
+        "name": "Orange",
+        "description": "Very tasty",
+        "price": 213.5,
+        "quantity": 120,
+        "country": "China",
+        "germination_period": 1,
+        "color": "green"
+    }
+
+@pytest.fixture
+def dictionary8():
+    return {
+        "name": "Cucumber",
+        "description": "Very tasty",
+        "price": 2345.5,
+        "quantity": 10,
+        "country": "China",
+        "germination_period": 3,
+        "color": "blue"
+    }

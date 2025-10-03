@@ -12,7 +12,7 @@ class Product:
 
     @classmethod
     def new_product(cls, product_data):
-        product = Product(**product_data)
+        product = cls(**product_data)
         return product
 
     @property
@@ -37,34 +37,89 @@ class Product:
     def __add__(self, other):
         if not isinstance(other, Product):
             raise TypeError(f"Ожидался Product, а получен {type(other).__name__}")
+        elif type(self) is not type(other):
+            raise TypeError("Это продукты разных классов")
         return self.price * self.quantity + other.price * other.quantity
 
 
-# if __name__ == "__main__":
-#     dictionary1 = {
-#         "name": "Cucumber",
-#         "description": "Very tasty",
-#         "price": 10.5,
-#         "quantity": 10,
-#     }
-#     dictionary2 = {
-#         "name": "Apple",
-#         "description": "Very tasty",
-#         "price": 233.5,
-#         "quantity": 30,
-#     }
-#     dictionary3 = {
-#         "name": "Orange",
-#         "description": "Very tasty",
-#         "price": 213.5,
-#         "quantity": 120,
-#     }
-#     dictionary4 = {
-#         "name": "Cucumber",
-#         "description": "Very tasty",
-#         "price": 2345.5,
-#         "quantity": 10,
-#     }
+class Smartphone(Product):
+
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+class LawnGrass(Product):
+
+    def __init__(self, name, description, price, quantity, country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+
+if __name__ == "__main__":
+    dictionary1 = {
+        "name": "Cucumber",
+        "description": "Very tasty",
+        "price": 10.5,
+        "quantity": 10,
+        "efficiency": 20,
+        "model": "Samsung",
+        "memory": 64,
+        "color": "white"
+
+    }
+    dictionary2 = {
+        "name": "Apple",
+        "description": "Very tasty",
+        "price": 233.5,
+        "quantity": 30,
+        "efficiency": 30,
+        "model": "Xiaomi",
+        "memory": 32,
+        "color": "black"
+    }
+    dictionary3 = {
+        "name": "Orange",
+        "description": "Very tasty",
+        "price": 213.5,
+        "quantity": 120,
+        "country": "China",
+        "germination_period": 1,
+        "color": "green"
+    }
+    dictionary4 = {
+        "name": "Cucumber",
+        "description": "Very tasty",
+        "price": 2345.5,
+        "quantity": 10,
+        "country": "China",
+        "germination_period": 3,
+        "color": "blue"
+    }
+
+    product1 = Smartphone.new_product(dictionary1)
+    product2 = Smartphone.new_product(dictionary2)
+    product3 = LawnGrass.new_product(dictionary3)
+    product4 = LawnGrass.new_product(dictionary4)
+
+    print(product1)
+    print(product2)
+    print(product3)
+    print(product4)
+
+    print(product1 + product2)
+    print(product3 + product4)
+
+    print(product1 + product4)
+    print(product3 + product2)
+
+
+
+
 #     #
 #     #     product_list = []
 #
@@ -72,16 +127,16 @@ class Product:
 #     product2 = Product.new_product(dictionary2)
 #     product3 = Product.new_product(dictionary3)
 #     product4 = Product.new_product(dictionary4)
-#
+# #
 #     print(product1)
 #     print(product2)
 #     print(product3)
 #     print(product4)
-#
+# #
 #     product_wrong = "Banana"
 #
 #     print(product1 + product2)
-#     print(product1 + product_wrong)
+    # print(product1 + product_wrong)
 
 # print(product1.name)
 #     print(type(product1))

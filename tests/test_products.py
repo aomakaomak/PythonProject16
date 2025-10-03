@@ -1,4 +1,4 @@
-from src.products import Product
+from src.products import Product, Smartphone, LawnGrass
 import pytest
 
 
@@ -73,3 +73,34 @@ def test_products_add_wrong_product(first_product, wrong_product):
     with pytest.raises(TypeError) as excinfo:
         _ = first_product + wrong_product
     assert str(excinfo.value) == expected_message
+
+
+def test_products_of_subclass_init(smart_product1):
+    assert smart_product1.name == "Samsung S20FE"
+    assert smart_product1.description == "local"
+    assert smart_product1.price == 700
+    assert smart_product1.quantity == 10
+    assert smart_product1.efficiency == "A"
+    assert smart_product1.model == "S20FE"
+    assert smart_product1.memory == 64
+    assert smart_product1.color == "white"
+
+
+def test_new_product_of_subclass(dictionary5, dictionary6, dictionary7, dictionary8):
+    product1 = Smartphone.new_product(dictionary5)
+    product2 = Smartphone.new_product(dictionary6)
+    product3 = LawnGrass.new_product(dictionary7)
+    product4 = LawnGrass.new_product(dictionary8)
+    assert product1.name == "Cucumber"
+    assert product1.description == "Very tasty"
+    assert product1.price == 10.5
+    assert product1.quantity == 10
+    assert product1.efficiency == 20
+    assert product1.model == "Samsung"
+    assert product1.memory == 64
+    assert product1.color == "white"
+
+
+    assert product2.model == "Xiaomi"
+    assert product3.germination_period == 1
+    assert product4.color == "blue"
