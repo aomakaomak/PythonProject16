@@ -104,3 +104,15 @@ def test_new_product_of_subclass(dictionary5, dictionary6, dictionary7, dictiona
     assert product2.model == "Xiaomi"
     assert product3.germination_period == 1
     assert product4.color == "blue"
+
+
+def test_products_add_product_of_same_subclass(smart_product1, smart_product2):
+    assert (smart_product1 + smart_product2) == 19000
+
+
+def test_products_add_product_of_another_subclass(smart_product1, grass_product1):
+    expected_message = "Это продукты разных классов"
+    with pytest.raises(TypeError) as excinfo:
+        _ = smart_product1 + grass_product1
+    assert str(excinfo.value) == expected_message
+
