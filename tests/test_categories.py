@@ -1,3 +1,5 @@
+import pytest
+
 from src.categories import MyList
 
 
@@ -45,3 +47,22 @@ def test_categories_class_mylist(first_category, capsys):
     assert (
         "Cucumber, 23.5 руб. Остаток: 10 шт.\nTomato, 45.2 руб. Остаток: 20 шт." in out
     )
+
+
+def test_categories_add_product_error(first_category, first_product):
+    first_product = 1
+    expected_message = "Вы добавляете не продукт"
+    with pytest.raises(TypeError) as excinfo:
+        first_category.add_product(first_product)
+    assert str(excinfo.value) == expected_message
+
+
+def test_categories_add_product_smartphone(first_category, smart_product1):
+    assert len(first_category.products_in_list) == 2
+    first_category.add_product(smart_product1)
+    assert first_category.products == (
+        "Cucumber, 23.5 руб. Остаток: 10 шт.\n"
+        "Tomato, 45.2 руб. Остаток: 20 шт.\n"
+        "Samsung S20FE, 700 руб. Остаток: 10 шт."
+    )
+    assert len(first_category.products_in_list) == 3

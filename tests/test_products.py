@@ -1,5 +1,6 @@
-from src.products import Product, Smartphone, LawnGrass
 import pytest
+
+from src.products import LawnGrass, Product, Smartphone
 
 
 def test_products_init(first_product):
@@ -100,7 +101,6 @@ def test_new_product_of_subclass(dictionary5, dictionary6, dictionary7, dictiona
     assert product1.memory == 64
     assert product1.color == "white"
 
-
     assert product2.model == "Xiaomi"
     assert product3.germination_period == 1
     assert product4.color == "blue"
@@ -115,4 +115,3 @@ def test_products_add_product_of_another_subclass(smart_product1, grass_product1
     with pytest.raises(TypeError) as excinfo:
         _ = smart_product1 + grass_product1
     assert str(excinfo.value) == expected_message
-
