@@ -1,4 +1,4 @@
-from products import Product
+from src.products import Product
 
 
 class Category:
@@ -6,20 +6,23 @@ class Category:
     description: str
     __products: list
 
-    number_of_categories = 0
-    number_of_products = 0
+    category_count = 0
+    product_count = 0
 
     def __init__(self, name, description, products=None):
         self.name = name
         self.description = description
         self.__products = products if products else []
 
-        Category.number_of_categories += 1
-        Category.number_of_products += len(products) if products else 0
+        Category.category_count += 1
+        Category.product_count += len(products) if products else 0
 
     def add_product(self, product: Product):
-        self.__products.append(product)
-        Category.number_of_products += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError("Вы добавляете не продукт")
 
     @property
     def products(self):
@@ -62,11 +65,16 @@ class MyList:
 
 # if __name__ == "__main__":
 #
+#
+#
 #     product1 = Product("Cucumber", "Very tasty", 23.5, 10)
 #     product2 = Product("Tomato", "Very fresh", 45.2, 20)
 #     product3 = Product("Limonade", "Cool", 12.3, 30)
 #     product4 = Product("Juice", "Natural", 29.2, 40)
 #     product5 = Product("Vodka", "Natural", 229.2, 50)
+#
+#     product_smart = Smartphone(name="Samsung S20FE", description="local", price=700, quantity=10, efficiency="A", model="S20FE", memory=64, color="white")
+#     product_lawn = LawnGrass(name="Grass", description="local", price=100, quantity=200, country="China", germination_period=2, color="green")
 #
 #     cat1 = Category("Food", "Some", [product1, product2])
 #     cat2 = Category("Drinks", "Some", [product3, product4])
@@ -75,17 +83,17 @@ class MyList:
 #     print(cat1.products)
 #     print(cat2.products)
 #
-#     cat2.add_product(product5)
+#     cat2.add_product(product_smart)
 #     print(product5.name)
 #
 #     print(cat2.products)
 #
-#     print(Category.number_of_categories)
-#     print(Category.number_of_products)
+#     print(Category.category_count)
+#     print(Category.product_count)
 #
 #     print(cat1)
 #     print(cat2)
-#
+# #
 #     category = MyList(cat1)
 #
 #     for product in category:
@@ -116,7 +124,7 @@ class MyList:
 # print(list(cat1.product_list))
 # print(list(cat2.product_list))
 
-# print(cat1.number_of_categories)
-# print(cat1.number_of_products)
+# print(cat1.category_count)
+# print(cat1.product_count)
 
 # print(cat1.__products)
