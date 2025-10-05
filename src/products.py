@@ -1,6 +1,7 @@
 from src.base_product import BaseProduct
 from src.print_mixin import PrintMixin
 
+
 class Product(PrintMixin, BaseProduct):
     name: str
     description: str
@@ -77,52 +78,51 @@ class LawnGrass(Product):
         return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity}, '{self.country}', {self.germination_period}, '{self.color}')"
 
 
-
-if __name__ == "__main__":
-    dictionary1 = {
-        "name": "Cucumber",
-        "description": "Very tasty",
-        "price": 10.5,
-        "quantity": 10,
-        "efficiency": 20,
-        "model": "Samsung",
-        "memory": 64,
-        "color": "white"
-
-    }
-    dictionary2 = {
-        "name": "Apple",
-        "description": "Very tasty",
-        "price": 233.5,
-        "quantity": 30,
-        "efficiency": 30,
-        "model": "Xiaomi",
-        "memory": 32,
-        "color": "black"
-    }
-    dictionary3 = {
-        "name": "Orange",
-        "description": "Very tasty",
-        "price": 213.5,
-        "quantity": 120,
-        "country": "China",
-        "germination_period": 1,
-        "color": "green"
-    }
-    dictionary4 = {
-        "name": "Cucumber",
-        "description": "Very tasty",
-        "price": 2345.5,
-        "quantity": 10,
-        "country": "China",
-        "germination_period": 3,
-        "color": "blue"
-    }
-
-    product1 = Smartphone.new_product(dictionary1)
-    product2 = Smartphone.new_product(dictionary2)
-    product3 = LawnGrass.new_product(dictionary3)
-    product4 = LawnGrass.new_product(dictionary4)
+# if __name__ == "__main__":
+#     dictionary1 = {
+#         "name": "Cucumber",
+#         "description": "Very tasty",
+#         "price": 10.5,
+#         "quantity": 10,
+#         "efficiency": 20,
+#         "model": "Samsung",
+#         "memory": 64,
+#         "color": "white"
+#
+#     }
+#     dictionary2 = {
+#         "name": "Apple",
+#         "description": "Very tasty",
+#         "price": 233.5,
+#         "quantity": 30,
+#         "efficiency": 30,
+#         "model": "Xiaomi",
+#         "memory": 32,
+#         "color": "black"
+#     }
+#     dictionary3 = {
+#         "name": "Orange",
+#         "description": "Very tasty",
+#         "price": 213.5,
+#         "quantity": 120,
+#         "country": "China",
+#         "germination_period": 1,
+#         "color": "green"
+#     }
+#     dictionary4 = {
+#         "name": "Cucumber",
+#         "description": "Very tasty",
+#         "price": 2345.5,
+#         "quantity": 10,
+#         "country": "China",
+#         "germination_period": 3,
+#         "color": "blue"
+#     }
+#
+#     product1 = Smartphone.new_product(dictionary1)
+#     product2 = Smartphone.new_product(dictionary2)
+#     product3 = LawnGrass.new_product(dictionary3)
+#     product4 = LawnGrass.new_product(dictionary4)
 #
 #     print(product1)
 #     print(product2)

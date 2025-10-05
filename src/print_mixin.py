@@ -1,5 +1,3 @@
-
-
 class PrintMixin:
 
     def __init__(self):
