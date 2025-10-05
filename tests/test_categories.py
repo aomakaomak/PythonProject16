@@ -1,3 +1,5 @@
+import pytest
+
 from src.categories import MyList
 
 
@@ -7,11 +9,11 @@ def test_categories_init(first_category, second_category):
     assert second_category.name == "Fruits"
     assert second_category.description == "Tasty"
 
-    assert first_category.number_of_categories == 2
-    assert second_category.number_of_categories == 2
+    assert first_category.category_count == 2
+    assert second_category.category_count == 2
 
-    assert first_category.number_of_products == 5
-    assert second_category.number_of_products == 5
+    assert first_category.product_count == 5
+    assert second_category.product_count == 5
 
 
 def test_categories_products_property(first_category):
@@ -45,3 +47,22 @@ def test_categories_class_mylist(first_category, capsys):
     assert (
         "Cucumber, 23.5 руб. Остаток: 10 шт.\nTomato, 45.2 руб. Остаток: 20 шт." in out
     )
+
+
+def test_categories_add_product_error(first_category, first_product):
+    first_product = 1
+    expected_message = "Вы добавляете не продукт"
+    with pytest.raises(TypeError) as excinfo:
+        first_category.add_product(first_product)
+    assert str(excinfo.value) == expected_message
+
+
+def test_categories_add_product_smartphone(first_category, smart_product1):
+    assert len(first_category.products_in_list) == 2
+    first_category.add_product(smart_product1)
+    assert first_category.products == (
+        "Cucumber, 23.5 руб. Остаток: 10 шт.\n"
+        "Tomato, 45.2 руб. Остаток: 20 шт.\n"
+        "Samsung S20FE, 700 руб. Остаток: 10 шт."
+    )
+    assert len(first_category.products_in_list) == 3
