@@ -6,21 +6,21 @@ class Category:
     description: str
     __products: list
 
-    number_of_categories = 0
-    number_of_products = 0
+    category_count = 0
+    product_count = 0
 
     def __init__(self, name, description, products=None):
         self.name = name
         self.description = description
         self.__products = products if products else []
 
-        Category.number_of_categories += 1
-        Category.number_of_products += len(products) if products else 0
+        Category.category_count += 1
+        Category.product_count += len(products) if products else 0
 
     def add_product(self, product: Product):
         if isinstance(product, Product):
             self.__products.append(product)
-            Category.number_of_products += 1
+            Category.product_count += 1
         else:
             raise TypeError("Вы добавляете не продукт")
 
@@ -88,8 +88,8 @@ class MyList:
 #
 #     print(cat2.products)
 #
-#     print(Category.number_of_categories)
-#     print(Category.number_of_products)
+#     print(Category.category_count)
+#     print(Category.product_count)
 #
 #     print(cat1)
 #     print(cat2)
@@ -124,7 +124,7 @@ class MyList:
 # print(list(cat1.product_list))
 # print(list(cat2.product_list))
 
-# print(cat1.number_of_categories)
-# print(cat1.number_of_products)
+# print(cat1.category_count)
+# print(cat1.product_count)
 
 # print(cat1.__products)

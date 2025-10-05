@@ -9,11 +9,11 @@ def test_categories_init(first_category, second_category):
     assert second_category.name == "Fruits"
     assert second_category.description == "Tasty"
 
-    assert first_category.number_of_categories == 2
-    assert second_category.number_of_categories == 2
+    assert first_category.category_count == 2
+    assert second_category.category_count == 2
 
-    assert first_category.number_of_products == 5
-    assert second_category.number_of_products == 5
+    assert first_category.product_count == 5
+    assert second_category.product_count == 5
 
 
 def test_categories_products_property(first_category):
