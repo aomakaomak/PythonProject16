@@ -45,6 +45,17 @@ class Category(BaseCategory):
             goods_count += product.quantity
         return f"{self.name}, количество продуктов: {goods_count} шт."
 
+    def middle_price(self):
+        prices = []
+        for product in self.products_in_list:
+            prices.append(product.price)
+        try:
+            middle_price_of_cat = sum(prices) / len(prices)
+        except ZeroDivisionError as e:
+            return 0
+        return middle_price_of_cat
+
+
 
 class MyList:
     category: Category
@@ -64,25 +75,32 @@ class MyList:
             raise StopIteration
 
 
-# if __name__ == "__main__":
-#
-#
-#
-#     product1 = Product("Cucumber", "Very tasty", 23.5, 10)
-#     product2 = Product("Tomato", "Very fresh", 45.2, 20)
-#     product3 = Product("Limonade", "Cool", 12.3, 30)
-#     product4 = Product("Juice", "Natural", 29.2, 40)
-#     product5 = Product("Vodka", "Natural", 229.2, 50)
-#
-#     product_smart = Smartphone(name="Samsung S20FE", description="local", price=700, quantity=10, efficiency="A", model="S20FE", memory=64, color="white")
-#     product_lawn = LawnGrass(name="Grass", description="local", price=100, quantity=200, country="China", germination_period=2, color="green")
-#
-#     cat1 = Category("Food", "Some", [product1, product2])
-#     cat2 = Category("Drinks", "Some", [product3, product4])
-#     print(cat1)
-#     print(cat2)
-#     print(cat1.products)
-#     print(cat2.products)
+if __name__ == "__main__":
+
+
+
+    product1 = Product("Cucumber", "Very tasty", 23.5, 10)
+    product2 = Product("Tomato", "Very fresh", 45.2, 20)
+    product3 = Product("Limonade", "Cool", 12.3, 30)
+    product4 = Product("Juice", "Natural", 29.2, 40)
+    product5 = Product("Vodka", "Natural", 229.2, 50)
+
+    # product_smart = Smartphone(name="Samsung S20FE", description="local", price=700, quantity=10, efficiency="A", model="S20FE", memory=64, color="white")
+    # product_lawn = LawnGrass(name="Grass", description="local", price=100, quantity=200, country="China", germination_period=2, color="green")
+
+    cat1 = Category("Food", "Some", [product1, product2])
+    cat2 = Category("Drinks", "Some", [product3, product4])
+    print(cat1)
+    print(cat2)
+    print(cat1.products)
+    print(cat2.products)
+
+    print(cat1.middle_price())
+    print(cat2.middle_price())
+
+    cat3 = Category("New", "Same", [])
+    print(cat3)
+    print(cat3.middle_price())
 #
 #     cat2.add_product(product_smart)
 #     print(product5.name)

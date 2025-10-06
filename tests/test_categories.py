@@ -66,3 +66,13 @@ def test_categories_add_product_smartphone(first_category, smart_product1):
         "Samsung S20FE, 700 руб. Остаток: 10 шт."
     )
     assert len(first_category.products_in_list) == 3
+
+
+def test_categories_middle_price(first_category):
+    assert first_category.middle_price() == 34.35
+
+
+def test_categories_middle_price_without_goods(category_without_goods):
+    assert category_without_goods.middle_price() == 0
+
+
