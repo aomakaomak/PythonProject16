@@ -122,4 +122,3 @@ def test_products_zero_quantity():
     with pytest.raises(ValueError) as excinfo:
         _ = Product("Cucumber", "Very tasty", 23.5, 0)
     assert str(excinfo.value) == expected_message
-

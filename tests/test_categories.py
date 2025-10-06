@@ -74,5 +74,3 @@ def test_categories_middle_price(first_category):
 
 def test_categories_middle_price_without_goods(category_without_goods):
     assert category_without_goods.middle_price() == 0
-
-
