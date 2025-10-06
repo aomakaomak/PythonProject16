@@ -9,6 +9,8 @@ class Product(PrintMixin, BaseProduct):
     quantity: int
 
     def __init__(self, name, description, price, quantity):
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.name = name
         self.description = description
         self.__price = price
@@ -79,6 +81,21 @@ class LawnGrass(Product):
 
 
 # if __name__ == "__main__":
+#
+#     product1 = Product("Cucumber", "Very tasty", 23.5, 10)
+#     product2 = Product("Tomato", "Very fresh", 45.2, 20)
+#
+#     print(product1.name)
+#     print(product1.description)
+#     print(product1.price)
+#     print(product1.quantity)
+#
+#     print(product2.name)
+#     print(product2.description)
+#     print(product2.price)
+#     print(product2.quantity)
+
+
 #     dictionary1 = {
 #         "name": "Cucumber",
 #         "description": "Very tasty",
