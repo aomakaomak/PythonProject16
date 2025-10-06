@@ -3,6 +3,7 @@ import builtins
 import pytest
 
 from src.categories import Category, MyList
+from src.order import Order
 from src.products import LawnGrass, Product, Smartphone
 
 
@@ -211,3 +212,13 @@ def dictionary8():
         "germination_period": 3,
         "color": "blue",
     }
+
+
+@pytest.fixture
+def order1():
+    return Order("link1", 10, 1)
+
+
+@pytest.fixture
+def order2():
+    return Order("link2", 20, 1)
