@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
+
+
+class Product(PrintMixin, BaseProduct):
     name: str
     description: str
     __price: float
@@ -9,6 +13,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     @classmethod
     def new_product(cls, product_data):
@@ -47,11 +52,15 @@ class Smartphone(Product):
     def __init__(
         self, name, description, price, quantity, efficiency, model, memory, color
     ):
-        super().__init__(name, description, price, quantity)
+
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
         self.color = color
+        super().__init__(name, description, price, quantity)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity}, '{self.efficiency}', '{self.model}', {self.memory}, '{self.color}')"
 
 
 class LawnGrass(Product):
@@ -59,10 +68,14 @@ class LawnGrass(Product):
     def __init__(
         self, name, description, price, quantity, country, germination_period, color
     ):
-        super().__init__(name, description, price, quantity)
+
         self.country = country
         self.germination_period = germination_period
         self.color = color
+        super().__init__(name, description, price, quantity)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity}, '{self.country}', {self.germination_period}, '{self.color}')"
 
 
 # if __name__ == "__main__":
