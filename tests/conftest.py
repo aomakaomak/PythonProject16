@@ -222,3 +222,12 @@ def order1():
 @pytest.fixture
 def order2():
     return Order("link2", 20, 1)
+
+
+@pytest.fixture
+def category_without_goods():
+    return Category(
+        name="Vegetables",
+        description="Fresh",
+        products=[],
+    )

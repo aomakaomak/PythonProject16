@@ -115,3 +115,10 @@ def test_products_add_product_of_another_subclass(smart_product1, grass_product1
     with pytest.raises(TypeError) as excinfo:
         _ = smart_product1 + grass_product1
     assert str(excinfo.value) == expected_message
+
+
+def test_products_zero_quantity():
+    expected_message = "Товар с нулевым количеством не может быть добавлен"
+    with pytest.raises(ValueError) as excinfo:
+        _ = Product("Cucumber", "Very tasty", 23.5, 0)
+    assert str(excinfo.value) == expected_message

@@ -9,6 +9,8 @@ class Product(PrintMixin, BaseProduct):
     quantity: int
 
     def __init__(self, name, description, price, quantity):
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.name = name
         self.description = description
         self.__price = price
@@ -79,55 +81,70 @@ class LawnGrass(Product):
 
 
 # if __name__ == "__main__":
-#     dictionary1 = {
-#         "name": "Cucumber",
-#         "description": "Very tasty",
-#         "price": 10.5,
-#         "quantity": 10,
-#         "efficiency": 20,
-#         "model": "Samsung",
-#         "memory": 64,
-#         "color": "white"
 #
-#     }
-#     dictionary2 = {
-#         "name": "Apple",
-#         "description": "Very tasty",
-#         "price": 233.5,
-#         "quantity": 30,
-#         "efficiency": 30,
-#         "model": "Xiaomi",
-#         "memory": 32,
-#         "color": "black"
-#     }
-#     dictionary3 = {
-#         "name": "Orange",
-#         "description": "Very tasty",
-#         "price": 213.5,
-#         "quantity": 120,
-#         "country": "China",
-#         "germination_period": 1,
-#         "color": "green"
-#     }
-#     dictionary4 = {
-#         "name": "Cucumber",
-#         "description": "Very tasty",
-#         "price": 2345.5,
-#         "quantity": 10,
-#         "country": "China",
-#         "germination_period": 3,
-#         "color": "blue"
-#     }
+#     product1 = Product("Cucumber", "Very tasty", 23.5, 10)
+#     product2 = Product("Tomato", "Very fresh", 45.2, 20)
 #
-#     product1 = Smartphone.new_product(dictionary1)
-#     product2 = Smartphone.new_product(dictionary2)
-#     product3 = LawnGrass.new_product(dictionary3)
-#     product4 = LawnGrass.new_product(dictionary4)
+#     print(product1.name)
+#     print(product1.description)
+#     print(product1.price)
+#     print(product1.quantity)
 #
-#     print(product1)
-#     print(product2)
-#     print(product3)
-#     print(product4)
+#     print(product2.name)
+#     print(product2.description)
+#     print(product2.price)
+#     print(product2.quantity)
+
+
+# dictionary1 = {
+#     "name": "Cucumber",
+#     "description": "Very tasty",
+#     "price": 10.5,
+#     "quantity": 10,
+#     "efficiency": 20,
+#     "model": "Samsung",
+#     "memory": 64,
+#     "color": "white"
+#
+# }
+# dictionary2 = {
+#     "name": "Apple",
+#     "description": "Very tasty",
+#     "price": 233.5,
+#     "quantity": 30,
+#     "efficiency": 30,
+#     "model": "Xiaomi",
+#     "memory": 32,
+#     "color": "black"
+# }
+# dictionary3 = {
+#     "name": "Orange",
+#     "description": "Very tasty",
+#     "price": 213.5,
+#     "quantity": 120,
+#     "country": "China",
+#     "germination_period": 1,
+#     "color": "green"
+# }
+# dictionary4 = {
+#     "name": "Cucumber",
+#     "description": "Very tasty",
+#     "price": 2345.5,
+#     "quantity": 10,
+#     "country": "China",
+#     "germination_period": 3,
+#     "color": "blue"
+# }
+#
+# product1 = Smartphone.new_product(dictionary1)
+# product2 = Smartphone.new_product(dictionary2)
+# product3 = LawnGrass.new_product(dictionary3)
+# product4 = LawnGrass.new_product(dictionary4)
+#
+# print(product1)
+# print(product2)
+# print(product3)
+# print(product4)
 #
 #     print(product1 + product2)
 #     print(product3 + product4)
